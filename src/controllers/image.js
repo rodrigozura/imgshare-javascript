@@ -9,7 +9,11 @@ const ctrl = {};
 //aca es donde manejamos la logica
 //separada de lo demas
 
-ctrl.index = (req, res) => {
+ctrl.index = async (req, res) => {
+
+    const image = await Image.findOne({filename: {$regex: req.params.image_id}});
+    
+    res.render('images', { image });
      
 };
 
@@ -37,7 +41,7 @@ ctrl.create =  (req, res) => {
                         filename: imgUrl + ext,
                       });
                     const imageSaved = await newImg.save();
-                    res.send('works!')
+                    res.redirect('/images/' + imgUrl);
 
             }else{
     
