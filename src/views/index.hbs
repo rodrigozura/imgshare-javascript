@@ -9,7 +9,8 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" name="image" class="custom-file-input" id="inputGroup" aria-describedby="inputGroupFileAddon" required>
+                        <input type="file" name="image" class="custom-file-input" id="inputGroup"
+                            aria-describedby="inputGroupFileAddon" required>
                         <label class="custom-file-label" for="inputGroupFile">Choose File</label>
                     </div>
                 </div>
@@ -18,7 +19,8 @@
                 <input type="text" name="title" class="form-control" placeholder="Titulo for the image" required>
             </div>
             <div class="form-group">
-                <textarea name="description" id="" rows="2" class="form-control" placeholder="Description for the image" required></textarea>
+                <textarea name="description" id="" rows="2" class="form-control" placeholder="Description for the image"
+                    required></textarea>
             </div>
             <div class="form-group">
                 <button class="btn btn-success"><i class="fas fa-upload"></i> Upload Image</button>
@@ -26,4 +28,22 @@
         </form>
 
     </div>
+</div>
+{{images}}
+<div class="card mt-2">
+    <div class="card-header bg-dark text-white">
+        <h3><i class="fas fa-images"></i> Recent Uploads</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {{#each images}}
+                <div class="col-md-4">
+                    <a href="/images/{{uniqueId}}">
+                        <img src="/public/upload/{{filename}}" alt="{{title}}" class="w-100 h-100 img-thumbnail">
+                    </a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+
 </div>
